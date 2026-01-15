@@ -1,0 +1,195 @@
+test1 = {
+    "Question 1": {
+        "question": "What is 2+2?",
+        "answers": {
+            "a": "5",
+            "b": "4",
+            "c": "8"
+        },
+        "Correct Answer": "b"
+    },
+
+    "Question 2": {
+        "question": "What is 2+10?",
+        "answers": {
+            "a": "11",
+            "b": "77",
+            "c": "12"
+        },
+        "Correct Answer": "c"
+    },
+
+    "Question 3": {
+        "question": "What is 789x692?",
+        "answers": {
+            "a": "545,156",
+            "b": "545,988",
+            "c": "613,982"
+        },
+        "Correct Answer": "b"
+    }
+}
+test2 = {
+    "Question 1": {
+        "question": "What is the capital of france?",
+        "answers": {
+            "a": "Paris",
+            "b": "Belgium",
+            "c": "London"
+        },
+        "Correct Answer": "a"
+    },
+
+    "Question 2": {
+        "question": "What is the hottest place on earth?",
+        "answers": {
+            "a": "Death Valley, California",
+            "b": "Lut Desert, Iran",
+            "c": "Jeddah, Saudi Arabia"
+        },
+        "Correct Answer": "a"
+    },
+
+    "Question 3": {
+        "question": "Which of the places below does not exist?",
+        "answers": {
+            "a": "Bell End, UK",
+            "b": "Purgatory, USA",
+            "c": "Desolate, UK"
+        },
+        "Correct Answer": "c"
+    }
+}
+test3 = {
+    "Question 1": {
+        "question": "What is the most common coding languge?",
+        "answers": {
+            "a": "Python",
+            "b": "C++",
+            "c": "Java"
+        },
+        "Correct Answer": "a"
+    },
+
+    "Question 2": {
+        "question": "Which of these is inncorrect",
+        "answers": {
+            "a": "def open_door():",
+            "b": "Def open_door():",
+            "c": "def opendoor():"
+        },
+        "Correct Answer": "b"
+    },
+
+    "Question 3": {
+        "question": "Which of these coding langauges don't exist",
+        "answers": {
+            "a": "R",
+            "b": "CPP",
+            "c": "Swift+"
+        },
+        "Correct Answer": "c"
+    }
+}
+test4 = {
+    "Question 1": {
+        "question": "Which word is a noun?",
+        "answers": {
+            "a": "Run",
+            "b": "Happiness",
+            "c": "Quickly"
+        },
+        "Correct Answer": "b"
+    },
+
+    "Question 2": {
+        "question": "Which sentence is punctuated correctly?",
+        "answers": {
+            "a": "Its raining outside",
+            "b": "It's raining outside",
+            "c": "Its' raining outside"
+        },
+        "Correct Answer": "b"
+    },
+
+    "Question 3": {
+        "question": "Which word is a synonym for 'big'?",
+        "answers": {
+            "a": "Tiny",
+            "b": "Huge",
+            "c": "Small"
+        },
+        "Correct Answer": "b"
+    }
+}
+test5 = {
+    "Question 1": {
+        "question": "Who was the first President of the United States?",
+        "answers": {
+            "a": "George Washington",
+            "b": "Abraham Lincoln",
+            "c": "John Adams"
+        },
+        "Correct Answer": "a"
+    },
+
+    "Question 2": {
+        "question": "In which year did World War II end?",
+        "answers": {
+            "a": "1945",
+            "b": "1939",
+            "c": "1950"
+        },
+        "Correct Answer": "a"
+    },
+
+    "Question 3": {
+        "question": "Which ancient civilization built the pyramids?",
+        "answers": {
+            "a": "Romans",
+            "b": "Greeks",
+            "c": "Egyptians"
+        },
+        "Correct Answer": "c"
+    }
+}
+test6 = {
+    "Question 1": {
+        "question": "What gas do plants breathe in?",
+        "answers": {
+            "a": "Oxygen",
+            "b": "Carbon Dioxide",
+            "c": "Nitrogen"
+        },
+        "Correct Answer": "b"
+    },
+
+    "Question 2": {
+        "question": "What is H2O commonly known as?",
+        "answers": {
+            "a": "Salt",
+            "b": "Water",
+            "c": "Hydrogen"
+        },
+        "Correct Answer": "b"
+    },
+
+    "Question 3": {
+        "question": "Which part of the cell contains DNA?",
+        "answers": {
+            "a": "Nucleus",
+            "b": "Cell Wall",
+            "c": "Cytoplasm"
+        },
+        "Correct Answer": "a"
+    }
+}
+
+
+QUIZZES = {
+    "Maths": test1,
+    "Geography": test2,
+    "Computer Science": test3,
+    "English": test4,
+    "History": test5,
+    "Science": test6
