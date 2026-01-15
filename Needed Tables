@@ -1,0 +1,41 @@
+sql = """
+CREATE TABLE "User_Table" (
+	"UserID"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	"Username"	TEXT,
+	"User_Password"	TEXT,
+   	 "User_FirstName" TEXT,
+    	"User_Surname" TEXT,
+   	 "User_DOB" DATE,
+    	"User_EmailAddress" TEXT,
+   	 "User_TeacherStatus" BOOLEAN,
+   	 "User_Stars" INTEGER,
+     "User_PredictGrade" INTEGER
+
+);
+CREATE TABLE "Track_Table"(
+    "TrackingID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "Track_DateSet" DATE,
+    "Track_DateDue" DATE,
+    "Track_Category" TEXT,
+    "Track_WhoSet" TEXT,
+    "Track_Result" INTEGER,
+    "Track_CompleteY_N" BOOLEAN,
+    "Track_DateCompleted" DATE,
+    "UserID" INTEGER,
+    CONSTRAINT "UserID" FOREIGN KEY ("UserID") REFERENCES "User_Table"("UserID")
+);
+insert into User_Table (Username, User_Password, User_FirstName, User_Surname,User_DOB, User_EmailAddress, User_TeacherStatus, User_PredictGrade) values ('1','1', 'Billy', 'S1','12/03/2009', 'Student1@outlook.com','False','7');
+insert into User_Table (Username, User_Password, User_FirstName, User_Surname,User_DOB, User_EmailAddress, User_TeacherStatus, User_PredictGrade) values ('2','2', 'Timmy', 'S2','21/09/2008', 'Student2@outlook.com','False','5');
+insert into User_Table (Username, User_Password, User_FirstName, User_Surname,User_DOB, User_EmailAddress, User_TeacherStatus, User_PredictGrade) values ('3','3', 'Callum', 'S3','26/11/2007', 'Student3@outlook.com','False','6');
+insert into User_Table (Username, User_Password, User_FirstName, User_Surname,User_DOB, User_EmailAddress, User_TeacherStatus, User_PredictGrade) values ('t1','t1', 'John', 'T1','15/10/1985', 'Teacher1@outlook.com','True','0');
+insert into Track_Table 
+(Track_DateSet, Track_DateDue, Track_Category, Track_WhoSet, Track_CompleteY_N, UserID) 
+VALUES 
+('2024-02-21','2024-03-21','Maths','John','False',1),
+('2024-02-21','2024-03-21','Geography','John','Flse',1),
+('2024-02-21','2024-03-21','Computing','John','False',1),
+('2024-02-21','2024-03-21','English','John','False',1),
+('2024-02-21','2024-03-21','History','John','False',1),
+('2024-02-21','2024-03-21','Sciencdde','John','False',1);
+
+""" 
