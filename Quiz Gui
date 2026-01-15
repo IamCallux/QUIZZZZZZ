@@ -1,0 +1,67 @@
+teach_window= Window(login,title="Teacher Application", height=400, bg="royalblue")
+
+
+
+
+student_window= Window(login,title="Student Application", height=1000, width=1500, bg="royalblue")
+student_text_gap = Text(student_window, text="                                    ")
+student_text_gap2 = Text(student_window, text="                                    ")
+student_text1 = Text(student_window, text="Welcome to the student viewing application", size=20)
+student_text1.font="Century Gothic"
+student_text2 = Text(student_window, text="Here you can complete, see completed and see incompleted tests set by your teacher", size=10)
+student_text2.font ="Century Gothic"
+student_text_gap3 = Text(student_window, text="                                    ")
+student_left = Box(student_window, width= "fill", align= "top")
+student_leave = PushButton(student_left, text="Exit", align="left", command=close_student_dash)
+student_bottom= Box(student_window, width="fill", align="bottom")
+student_left= Box(student_window, width="fill", align="left")
+student_right= Box(student_window, width="fill", align="right")
+Text(student_window, text="      ")
+
+facilitiestxt = Text(student_window, text="Your Tests")
+facilitiestxt.text_size = 20
+facilitiestxt.text_color = TEXTCOLOUR
+facilitiestxt.font = "Century Gothic"
+
+quizcompletedlistbox = ListBox(student_left, items=[], width=550, height=230, scrollbar=True)
+fill_completelistbox()
+quizcompletedlistbox.text_color = TEXTCOLOUR
+quizcompletedlistbox.font = "Century Gothic"
+quizcompletedlistbox.text_size = 16
+quizcompletedlistbox.bg = "#154734"
+
+quiztodolistbox = ListBox(student_right, items=[], width=550, height=230, scrollbar=True)
+fill_incompletelistbox()
+quiztodolistbox.text_color = TEXTCOLOUR
+quiztodolistbox.font = "Century Gothic"
+quiztodolistbox.text_size = 16
+quiztodolistbox.bg = "#154734"
+
+Text(student_window, text="      ")
+
+eventstxt = Text(student_window, text="MORE HELP")
+eventstxt.text_size = 18
+eventstxt.text_color = TEXTCOLOUR
+eventstxt.font = "Century Gothic"
+
+bottombox = Box(student_window, layout="grid", width="fill")
+
+linksM_button = PushButton(bottombox, text="Links to MATHS", grid=[0,0], command=open_learning)
+linksM_button.text_size = 13
+linksM_button.text_color = TEXTCOLOUR
+linksM_button.font = "Century Gothic"
+linksM_button.bg = BUTTONCOLOUR
+
+linksE_button = PushButton(bottombox, text="Links to ENGLISH", grid=[1,0], command=open_learning2)
+linksE_button.text_size = 13 
+linksE_button.text_color = TEXTCOLOUR
+linksE_button.font = "Century Gothic"
+linksE_button.bg = BUTTONCOLOUR
+quiztake_button = PushButton(student_window,text="TAKE SELECTED TEST", command=take_selected_test)
+
+Text(student_window, text="")
+
+
+quiz_window = Window(login, title="Quiz", width=600, height=700, bg="royalblue")
+Quiz_epic_box = Box(quiz_window, layout="auto", height =700, width=600)
+quiz_window.hide()
