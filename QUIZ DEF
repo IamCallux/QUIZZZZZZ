@@ -1,0 +1,113 @@
+def fill_completelistbox():
+    quizcompletedlistbox.append('YOUR COMPLETED TESTS')
+    query = "SELECT * FROM Track_Table WHERE UserID = ? AND Track_CompleteY_N = 'True'"
+    rows = query_database(database_file, query, (1,))
+    
+    if len(rows) == 0:
+        info("Error", "You have not completed any tests")
+    else:
+        quizcompletedlistbox.append(" ")
+        for row in rows:
+            formatted_row = f"{row[0]} {row[1]} {row[2]}  score {row[5]}"
+            quizcompletedlistbox.append(formatted_row)
+        for i in range(0,len(rows)):
+            formatted_id = rows[i][0] 
+            formatted_quiz = rows[i][1]
+            formatted_subject = rows[i][2]
+            formatted_score = rows[i][5]
+            formatted_row = str(formatted_id) + " " + formatted_quiz + " " + formatted_subject + "  score " + str(formatted_score)
+            quizcompletedlistbox.append(formatted_row)
+
+
+def fill_incompletelistbox():
+    quiztodolistbox.clear()
+    quiztodolistbox.append('NEW TESTS TO DO')
+
+    query = """
+        SELECT TrackingID, Track_Category 
+        FROM Track_Table 
+        WHERE UserID = ? AND Track_CompleteY_N = 'False'
+    """
+    rows = query_database(database_file, query, (1,))
+
+    valid_tests = False
+
+    for row in rows:
+        track_id, category = row
+        if category in QUIZZES:
+            quiztodolistbox.append(f"{track_id} - {category}")
+            valid_tests = True
+
+    if not valid_tests:
+        info("Info", "No available tests to complete")
+#
+#
+def take_selected_test():
+    if quiztodolistbox.value is None:
+        info("Error", "Please select a test")
+        return
+
+    selected = quiztodolistbox.value
+    category = selected.split(" - ")[1]
+
+    if category not in QUIZZES:
+        info("Error", "This test is not available")
+        return
+
+    open_quiz(QUIZZES[category], category)
+#
+#
+def open_quiz(quiz_data, subject):
+    student_window.hide()
+    quiz_window.show()
+
+    Text(Quiz_epic_box, text=f"{subject} Quiz", size=50)
+
+    score = 0
+
+    for q in quiz_data.values():
+        Text(Quiz_epic_box, text=q["question"], size=14)
+
+        for key, value in q["answers"].items():
+            def check_answer(ans=key, correct=q["Correct Answer"]):
+                nonlocal score
+                if ans == correct:
+                    score += 1
+
+            PushButton(
+                Quiz_epic_box,
+                text=f"{key}) {value}",
+                command=check_answer
+            )
+
+        Text(Quiz_epic_box, text=" ")
+
+    PushButton(
+        Quiz_epic_box,
+        text="Finish Quiz",
+        command=lambda: finish_quiz(score, subject)
+    )
+#
+#
+def clear_box(box):
+    for child in box.children[:]:
+        child.destroy()
+#
+#
+def finish_quiz(score, subject):
+    execute_sql(
+        database_file,
+        """
+        UPDATE Track_Table
+        SET Track_Result = ?, Track_CompleteY_N = 'True'
+        WHERE Track_Category = ? AND UserID = ?
+        """,
+        (score, subject, 1)
+    )
+
+    info("Quiz Complete", f"You scored {score}")
+    clear_box(Quiz_epic_box)
+    quiz_window.hide()
+    open_student_dash()
+    fill_completelistbox()
+    fill_incompletelistbox()
